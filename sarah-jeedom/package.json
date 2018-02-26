@@ -1,0 +1,17 @@
+{
+    "name"          : "Sarah-Jeedom",
+    "version"       : "0.1",
+    "description"   : "permet de piloter Jeedom avec sarah",
+    "dependencies"  : {
+    },
+    "keywords": [ "sarah", "Jeedom"],
+    "node-red"      : {
+        "version": ">=0.1",
+        "nodes"     : {
+            "sarah-jeedom": "sarah-jeedom.js"
+        }
+    },
+    "author": {
+        "name": "Guirec ANDRE"
+    }
+}
