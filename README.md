@@ -1,3 +1,5 @@
+### ATTENTION - à tester n'utilisant pas Jeedom je n'ai pas tester mais en theorie ca devrait fonctionner au moins pour les on/off pour les status et temperatures un peu moins certains - ATTENTION
+
 ### Module Node-Red pour S.A.R.A.H V5
 
 Ce module sarah-jeedom permet de commander et recevoir les états des periphériques de Jeedom.
