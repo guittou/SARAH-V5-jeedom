@@ -18,7 +18,7 @@ modifier le fichier **sarah-jeedom.xml** pour qu'il corresponde à vos actions s
 
 `out.action.plugin` ==> utilisé comme discriminant pour identifier le plugin
 
-`out.action.cmdide` ==> id de l'action dans jeedom
+`out.action.cmdid` ==> id de l'action dans jeedom
 
 `out.action.type` ==> **switch** ou **temp** ou **humidity**
 	
