@@ -1,6 +1,6 @@
 ### Module Node-Red pour S.A.R.A.H V5
 
-Ce module sarah-domticz permet de commander et recevoir les états des periphériques de Jeedom.
+Ce module sarah-jeedom permet de commander et recevoir les états des periphériques de Jeedom.
 
 télécharger, extraire puis copier le repertoire **sarah-jeedom** dans le dossier `\sarah\viseo-bot-framework\node_modules\`
 
