@@ -1,4 +1,4 @@
-### ATTENTION - à tester n'utilisant pas Jeedom je n'ai pas tester mais en theorie ca devrait fonctionner au moins pour les on/off pour les status et temperatures un peu moins certains - ATTENTION
+### ATTENTION - à tester n'utilisant pas Jeedom je n'ai pas testé mais en théorie ca devrait fonctionner au moins pour les on/off pour les status et températures un peu moins certains - ATTENTION
 
 ### Module Node-Red pour S.A.R.A.H V5
 
