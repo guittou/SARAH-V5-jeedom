@@ -22,9 +22,9 @@ modifier le fichier **sarah-jeedom.xml** pour qu'il corresponde à vos actions s
 
 `out.action.cmdid` ==> id de l'action dans jeedom
 
-`out.action.type` ==> **switch** ou **temp** ou **humidity**
+`out.action.type` ==> **switch** / **temp** / **humidity** / **scenario**
 	
-`out.action.action` ==> **On** / **Off** / **status**
+`out.action.action` ==> **On** / **Off** / **status** / **start**(scenario) / **activer**(scenario) / **stop**(scenario) / **desactiver**(scenario)
 
 dans le cas de plusieurs plugins utiliser un module **switch** avec comme discriminant `msg.payload.options.plugin` renvoyé par **win-sarah** (ici **jeedom-http**)
 
@@ -42,13 +42,13 @@ valeur de `out.action.plugin` du fichier **sarah-jeedom.xml**
 
 - `msg.payload.options.action`:
 
-**On** / **Off** / **status**
+**On** / **Off** / **status** / **start**(scenario) / **activer**(scenario) / **stop**(scenario) / **desactiver**(scenario)
 
 valeur de `out.action.action` du fichier **sarah-jeedom.xml**
 
 - `msg.payload.options.type`:
 
-**switch** / **temp** / **humidity**
+**switch** / **temp** / **humidity** / **scenario**
 
 valeur de `out.action.type` du fichier **sarah-jeedom.xml**
 
@@ -73,4 +73,7 @@ sarah allumes/eteins le salon
 
 sarah quelle est la température/humidité du salon
 
-sarah comment est le salon
+sarah active/demarre/lance NOM_SCENARIO
+
+sarah stop/arrete/desactive NOM_SCENARIO
+
