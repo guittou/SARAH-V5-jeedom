@@ -1,111 +1,106 @@
 <grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleJeedom" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
-	
+
 	<rule id="ruleJeedom" scope="public">
 		<example>Sarah allume le salon</example>
-		<item>fifille</item>
+		<item>Sarah</item>
 		<one-of>
-
 			<item>
-			<ruleref uri="#jeedom_on"/>
+				<ruleref uri="#jeedom_on"/>
 			</item>
 
 			<item>
-			<ruleref uri="#jeedom_off"/>
+				<ruleref uri="#jeedom_off"/>
 			</item>
 
 			<item>
-			<ruleref uri="#jeedom_status"/>
+				<ruleref uri="#jeedom_status"/>
 			</item>
-						
+
+			<item>
+				<ruleref uri="#jeedom_scenario_on"/>
+			</item>
+
+			<item>
+				<ruleref uri="#jeedom_scenario_off"/>
+			</item>
 		</one-of>
-		
-		
 	</rule>
 	
-	
-	
-	
-	
 	<rule id="jeedom_on" scope="public">
-	
 		<tag>out.action=new Object(); </tag>
 		<tag>out.action.plugin="jeedom-http";</tag>
-		
+
 		<one-of>
-			
-			<item>allume <tag>out.action.action="On";</tag></item>
-
-			<item>met <tag>out.action.action="On";</tag></item>
-
+			<item>allume<tag>out.action.action="On";</tag></item>
+			<item>met<tag>out.action.action="On";</tag></item>
 		</one-of>
-		
 
 		<one-of>
-			
 			<item>Salon<tag>out.action.cmdid="221";</tag><tag>out.action.type="switch";</tag></item>
-			<item>Maison<tag>out.action.cmdid="231";</tag><tag>out.action.type="scenario";</tag></item>
-			
-			
-
+			<item>Maison<tag>out.action.cmdid="231";</tag><tag>out.action.type="switch";</tag></item>
 		</one-of>
-	
-	
 	</rule>
 
 	<rule id="jeedom_off" scope="public">
-	
 		<tag>out.action=new Object(); </tag>
 		<tag>out.action.plugin="jeedom-http";</tag>
-		
-		<one-of>
-			
-			<item>éteins <tag>out.action.action="Off";</tag></item>
-			
-			<item>arrete <tag>out.action.action="Off";</tag></item>			
-			
 
+		<one-of>
+			<item>éteins<tag>out.action.action="Off";</tag></item>
+			<item>arrete<tag>out.action.action="Off";</tag></item>
 		</one-of>
-		
 
 		<one-of>
-			
 			<item>Salon<tag>out.action.cmdid="222";</tag><tag>out.action.type="switch";</tag></item>
-			<item>Maison<tag>out.action.cmdid="232";</tag><tag>out.action.type="scenario";</tag></item>
-			
-
+			<item>Maison<tag>out.action.cmdid="232";</tag><tag>out.action.type="switch";</tag></item>
 		</one-of>
-	
-	
 	</rule>
 	
-
 	<rule id="jeedom_status" scope="public">
+		<tag>out.action=new Object(); </tag>
+		<tag>out.action.plugin="jeedom-http";</tag>
+
+		<one-of>
+            <item>Quelle est <tag>out.action.action="status";</tag></item>
+        </one-of>
+
+        <one-of>
+            <item>la tempeirature <tag>out.action.type="temp";</tag></item>
+            <item>l'humidité <tag>out.action.type="humidity";</tag></item>
+        </one-of>
+
+		<one-of>
+			<item>du salon<tag>out.action.cmdid="17";</tag><tag>out.action.tts="du salon";</tag></item>
+		</one-of>
+	</rule>
 	
+	<rule id="jeedom_scenario_on" scope="public">
+		<tag>out.action=new Object(); </tag>
+		<tag>out.action.plugin="jeedom-http";</tag>
+
+		<one-of>
+			<item>lance<tag>out.action.action="start";</tag></item>
+			<item>démarre<tag>out.action.action="start";</tag></item>
+			<item>active<tag>out.action.action="activer";</tag></item>
+		</one-of>
+
+		<one-of>
+			<item>Maison<tag>out.action.cmdid="2";</tag><tag>out.action.type="scenario";</tag></item>
+		</one-of>
+	</rule>
+	
+	<rule id="jeedom_scenario_off" scope="public">
 		<tag>out.action=new Object(); </tag>
 		<tag>out.action.plugin="jeedom-http";</tag>
 		
 		<one-of>
-			
-			<item>Quelle est <tag>out.action.action="status";</tag></item>
-
+			<item>stop<tag>out.action.action="stop";</tag></item>
+			<item>arrete<tag>out.action.action="stop";</tag></item>
+			<item>désactive<tag>out.action.action="désactiver";</tag></item>
 		</one-of>
 
 		<one-of>
-			
-			<item>la tempeirature <tag>out.action.type="temp";</tag></item>
-			<item>l'humidité <tag>out.action.type="humidity";</tag></item>
-			
+			<item>Maison<tag>out.action.cmdid="2";</tag><tag>out.action.type="scenario";</tag></item>
 		</one-of>
-		
-	
-		<one-of>
-		
-			<item>du salon <tag>out.action.cmdid="223";</tag><tag>out.action.tts="du salon";</tag></item>
-
-		</one-of>
-	
-	
 	</rule>
-
-  
 </grammar>
