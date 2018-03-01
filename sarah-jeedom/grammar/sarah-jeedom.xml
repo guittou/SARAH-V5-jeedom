@@ -70,7 +70,7 @@
         </one-of>
 
 		<one-of>
-			<item>du salon<tag>out.action.cmdid="17";</tag><tag>out.action.tts="du salon";</tag></item>
+			<item>du salon<tag>out.action.cmdid="17;NONE";</tag><tag>out.action.tts="du salon";</tag></item>
 		</one-of>
 	</rule>
 	

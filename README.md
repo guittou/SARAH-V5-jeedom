@@ -21,6 +21,18 @@ modifier le fichier **sarah-jeedom.xml** pour qu'il corresponde à vos actions s
 `out.action.plugin` ==> utilisé comme discriminant pour identifier le plugin
 
 `out.action.cmdid` ==> id de l'action dans jeedom
+	
+	Pour La récupératiuon de la température et de l'humidité ajouer deux id séparé par un point virgule. 
+	
+	Premier id pour la température 
+	
+	Deuxième id pour l'humidité
+	
+	Si l'un des capteurs n'existe pas remplacer l'id par "NONE"
+	
+	Exemple : 
+		
+		out.action.cmdid="17;NONE"; ==> id = 17 pour la température et pas de capteur d'humidité
 
 `out.action.type` ==> **switch** / **temp** / **humidity** / **scenario**
 	

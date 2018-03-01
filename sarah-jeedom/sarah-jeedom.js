@@ -13,12 +13,14 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
 
             var url = "http://" + node.host + ":" + node.port + "/core/api/jeeApi.php?apikey=" + node.apikey;
-            //Récupération des paramètres provenant du fichier grammar/sarah-domoticz.xml retourné par win-sarah
+            //Récupération des paramètres provenant du fichier grammar/sarah-jeedom.xml retourné par win-sarah
             var action = msg.payload.options.action;
             var device = msg.payload.options.device;
             var type = msg.payload.options.type;
             var cmdid = msg.payload.options.cmdid;
             var tts = msg.payload.options.tts;
+            
+            delete msg.speak;
             //teste si la variable commande est une action ou une demande de status
 
             switch (action) {
@@ -34,12 +36,21 @@ module.exports = function(RED) {
                 }
                 break;
             case "status":
-                if (cmdid) {
-                    url = url + '&type=cmd&id=' + cmdid;
-                } else {
+				var cmdid_split = cmdid.split(";");
+				
+				if (type === "temp" && cmdid_split[0] != "NONE"){
+					cmdid = cmdid_split[0]
+					url = url + '&type=cmd&id=' + cmdid;
+				}else if (type === "temp" && cmdid_split[0] === "NONE"){
+					msg.speak = "Il n'y a pas de capteur de température"
+				}else if (type === "humidity" && cmdid_split[1] != "NONE"){
+					cmdid = cmdid_split[1]
+					url = url + '&type=cmd&id=' + cmdid;
+				}else if (type === "humidity" && cmdid_split[1] === "NONE"){
+					msg.speak = "Il n'y a pas de capteur d'humidité"
+				}else {
                     msg.speak = "Il semble que la configuration soit invalide";
-
-                }
+                }				
                 break;
             case "start":
                 if (cmdid) {
@@ -123,11 +134,15 @@ module.exports = function(RED) {
                             break;
                         case "temp":
                             var temp = body.replace('.', ',');
+                            if (!msg.speak){
                             msg.speak = 'La température ' + tts + ' est de '+ temp +' degré';
+							}
                             break;
                         case "humidity":
                             var humidity = body.replace('.', ',');
+                             if (!msg.speak){
                             msg.speak = 'L\'humidité ' + tts + ' est de ' + humidity + ' %';
+							}
                             break;
                         default:
                             msg.speak = "Type invalide";
